@@ -9,11 +9,26 @@
     border-radius: 10px;
 }
 
+
+/*  front Crad  */
 .card .front-card {
     position: absolute;
     transform: rotateY(90deg);
+    transition: all ease-in 0.2s;
 }
 
 .flipped .front-card {
     transform: rotateY(0);
+    transition-delay: 0.2s;
+}
+
+/* Back Card */
+.card .back-card {
+    transition: all ease-in 0.2s;
+    transition-delay: 0.2;
+}
+
+.flipped .back-card {
+    transform: rotateY(90deg);
+    transition-delay: 0s;
 }
