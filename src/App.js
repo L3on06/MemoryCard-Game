@@ -27,7 +27,6 @@ function App() {
     justifyContent: "center",
     height: "100vh",
     textAlign: "center",
-
   };
 
   // Shuffle Cards
@@ -74,6 +73,7 @@ function App() {
     setChoiceOne(null)
     setChoiceTwo(null)
     setTurns(prevTurns => prevTurns + 1)
+    // setShow(prev => prev === <Countdown />)
     setDisabled(false)
   }
 
@@ -94,7 +94,6 @@ function App() {
             loading={loading}
             size={30}
             cssOverride={override}
-          // color={'rgba(255, 53, 127, 1) 100%'}
           />
           :
           <div className='container'>

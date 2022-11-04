@@ -1,14 +1,16 @@
+/* Crad */
 .card {
     margin-top: 60px;
     position: relative;
     display: flex;
     transition: all 0.3s ease-in;
+    perspective: 600px;
 }
 
 .card img {
     display: block;
-    max-width: 100%;
-    border-radius: 20px;
+    max-width: 90%;
+    border-radius: 10px;
     scale: 1;
 }
 
@@ -16,20 +18,26 @@
     scale: 1.1;
 }
 
+/* ////////////////////////// */
 
 /*  front Crad  */
+
 .card .front-card {
     position: absolute;
     transform: rotateY(90deg);
     transition: all ease-in 0.2s;
+
 }
 
 .flipped .front-card {
-    transform: rotateY(0);
+    transform: rotateY(180deg);
     transition-delay: 0.2s;
 }
 
+/* ////////////////////////////// */
+
 /* Back Card */
+
 .card .back-card {
     transition: all ease-in 0.2s;
     transition-delay: 0.2;
@@ -39,3 +47,5 @@
     transform: rotateY(90deg);
     transition-delay: 0s;
 }
+
+/* ///////////////////////////////// */
