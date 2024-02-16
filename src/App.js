@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-import SingleCard from './Components/SingleCard'
+import { useEffect, useState } from 'react';
+import './App.css';
+import SingleCard from './Components/SingleCard';
 import PropagateLoader from "react-spinners/PropagateLoader";
 
 const cardImages = [
@@ -10,15 +10,16 @@ const cardImages = [
   { "src": "/image/scroll-1.png", matched: false },
   { "src": "/image/shield-1.png", matched: false },
   { "src": "/image/sword-1.png", matched: false },
-]
+];
 
 function App() {
-  const [loading, setLoading] = useState(false)
-  const [cards, setCards] = useState([])
-  const [turns, setTurns] = useState(0)
-  const [choiceOne, setChoiceOne] = useState(null)
-  const [choiceTwo, setChoiceTwo] = useState(null)
-  const [disabled, setDisabled] = useState(false)
+  const [loading, setLoading] = useState(false);
+  const [cards, setCards] = useState([]);
+  const [turns, setTurns] = useState(0);
+  const [choiceOne, setChoiceOne] = useState(null);
+  const [choiceTwo, setChoiceTwo] = useState(null);
+  const [disabled, setDisabled] = useState(false);
+  const [gameStarted, setGameStarted] = useState(false); // New state to track if the game has started
 
   // Style for Loader
   const override = {
@@ -33,58 +34,66 @@ function App() {
   const shuffleCards = () => {
     const shuffledCards = [...cardImages, ...cardImages]
       .sort(() => Math.random() - 0.5)
-      .map(card => ({ ...card, id: Math.random() }))
+      .map(card => ({ ...card, id: Math.random() }));
 
-    setChoiceOne(null)
-    setChoiceTwo(null)
-    setCards(shuffledCards)
-    setTurns(0)
-  }
+    setChoiceOne(null);
+    setChoiceTwo(null);
+    setCards(shuffledCards);
+    setTurns(0);
+    setGameStarted(true); // Set gameStarted to true when the game starts
+  };
 
-  //Handle Choise
+  //Handle Choice
   const handleChoice = (card) => {
-    choiceOne ? setChoiceTwo(card) : setChoiceOne(card)
-    console.log(card)
-  }
+    choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
+  };
 
   // Compare 2 Selected Cards
   useEffect(() => {
     if (choiceOne && choiceTwo) {
-      setDisabled(true)
+      setDisabled(true);
       if (choiceOne.src === choiceTwo.src) {
         setCards(prevCards => {
           return prevCards.map(card => {
             if (card.src === choiceOne.src) {
-              return { ...card, matched: true }
+              return { ...card, matched: true };
             } else {
-              return card
+              return card;
             }
-          })
-        })
-        resetTurn()
+          });
+        });
+        resetTurn();
       } else {
-        setTimeout(() => resetTurn(), 1000)
+        setTimeout(() => resetTurn(), 1000);
       }
     }
-  }, [choiceOne, choiceTwo])
+  }, [choiceOne, choiceTwo]);
 
-  // Reset Choices & Increse turn
+  // Reset Choices & Increase turn
   const resetTurn = () => {
-    setChoiceOne(null)
-    setChoiceTwo(null)
-    setTurns(prevTurns => prevTurns + 1)
-    // setShow(prev => prev === <Countdown />)
-    setDisabled(false)
-  }
+    setChoiceOne(null);
+    setChoiceTwo(null);
+    setTurns(prevTurns => prevTurns + 1);
+    setDisabled(false);
+  };
 
   // Start New Game Automatically
   useEffect(() => {
-    setLoading(true)
+    setLoading(true);
     setTimeout(() => {
-      shuffleCards()
-      setLoading(false)
-    }, 1500)
-  }, [])
+      shuffleCards();
+      setLoading(false);
+    }, 1500);
+  }, []);
+
+  useEffect(() => {
+    if (gameStarted && cards.every(card => card.matched === true)) { // Only show prompt if game has started
+      setTimeout(() => {
+        shuffleCards();
+        alert(`Good job u did ${turns} turns, wanna tru again to break your record`);
+      }, 500);
+    }
+  }, [cards, gameStarted]);
 
   return (
     <main className="main">
@@ -96,8 +105,8 @@ function App() {
             cssOverride={override}
           />
           :
-          <div className='container'>
-            <div className='title-container'>
+          <section className='container'>
+            <article>
               <button className='title'>M</button>
               <button className='title'>E</button>
               <button className='title'>M</button>
@@ -108,12 +117,8 @@ function App() {
               <button className='title'>A</button>
               <button className='title'>M</button>
               <button className='title'>E</button>
-            </div>
-            <div className='flex'>
-              <button className='button' onClick={shuffleCards}>New Game</button>
-              <p className='turns'>Turns: {turns}</p>
-            </div>
-            <div className="card-grid">
+            </article>
+            <article className="card-grid">
               {cards.map(card => (
                 <SingleCard
                   key={card.id}
@@ -123,8 +128,8 @@ function App() {
                   disabled={disabled}
                 />
               ))}
-            </div>
-          </div>
+            </article>
+          </section>
       }
 
     </main>
