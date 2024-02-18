@@ -4,12 +4,12 @@ import SingleCard from './Components/SingleCard';
 import PropagateLoader from "react-spinners/PropagateLoader";
 
 const cardImages = [
-  { "src": "/image/helmet-1.png", matched: false },
-  { "src": "/image/potion-1.png", matched: false },
-  { "src": "/image/ring-1.png", matched: false },
-  { "src": "/image/scroll-1.png", matched: false },
-  { "src": "/image/shield-1.png", matched: false },
-  { "src": "/image/sword-1.png", matched: false },
+  { "src": "/images/Bulbasaur.png", matched: false },
+  { "src": "/images/Nidoking.png", matched: false },
+  { "src": "/images/Phanpy.png", matched: false },
+  { "src": "/images/Pidgey.png", matched: false },
+  { "src": "/images/Pikachu.png", matched: false },
+  { "src": "/images/Voltorb.png", matched: false },
 ];
 
 function App() {
@@ -43,8 +43,13 @@ function App() {
     setGameStarted(true); // Set gameStarted to true when the game starts
   };
 
-  //Handle Choice
+  // Handle Choice
   const handleChoice = (card) => {
+    if (choiceOne && choiceOne.id === card.id) {
+      // Do nothing if the same card is clicked again
+      return;
+    }
+
     choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
   };
 
@@ -90,8 +95,8 @@ function App() {
     if (gameStarted && cards.every(card => card.matched === true)) { // Only show prompt if game has started
       setTimeout(() => {
         shuffleCards();
-        alert(`Good job u did ${turns} turns, wanna tru again to break your record`);
-      }, 500);
+        alert(`Good job u did ${turns} turns, wanna try again to break your record`);
+      }, 1000);
     }
   }, [cards, gameStarted]);
 

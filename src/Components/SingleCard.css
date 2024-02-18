@@ -1,15 +1,28 @@
 /* Card */
+.dGrid {
+    display: grid;
+    align-items: center;
+}
+
+.flipped {
+    background-color: rgb(21, 35, 70);
+    border-radius: 25px;
+    display: grid;
+    align-items: center;
+}
+
 .card {
+    width: 160px;
     margin: 0 auto;
     transition: all 0.3s ease-in;
-    perspective: 500px;
+    perspective: 200px;
     user-select: none;
 }
 
 .card img {
     display: block;
-    max-width: 90%;
-    border-radius: 10px;
+    max-width: 100%;
+    border-radius: 25px;
     scale: 1;
 }
 
@@ -21,7 +34,7 @@
 .card .front-card {
     position: absolute;
     transform: rotateY(90deg);
-    transition: transform linear .2s;
+    transition: transform ease-in .25s;
 }
 
 .flipped .front-card {
@@ -31,7 +44,7 @@
 
 /* Back Card */
 .card .back-card {
-    transition: transform linear .2s;
+    transition: transform ease-in .25s;
 }
 
 .flipped .back-card {
