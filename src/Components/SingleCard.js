@@ -10,14 +10,14 @@ function Card({ card, handleChoice, flipped, disabled }) {
 
     return (
         <div className="card" key={card.id}>
-            <figure className={flipped ? "flipped dGrid" : "dGrid"}>
+            <figure className={flipped ? "flipped" : ""}>
                 <img
-                    className="front-card"
+                    className="frontCard"
                     src={card.src}
                     alt="Front Card"
                 />
                 <img
-                    className="back-card"
+                    className="backCard"
                     src="./images/cover.jpg"
                     onClick={handleClick}
                     alt="Cover - Back Card"

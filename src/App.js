@@ -4,12 +4,12 @@ import SingleCard from './Components/SingleCard';
 import PropagateLoader from "react-spinners/PropagateLoader";
 
 const cardImages = [
-  { "src": "/images/Bulbasaur.png", matched: false },
-  { "src": "/images/Nidoking.png", matched: false },
-  { "src": "/images/Phanpy.png", matched: false },
-  { "src": "/images/Pidgey.png", matched: false },
-  { "src": "/images/Pikachu.png", matched: false },
-  { "src": "/images/Voltorb.png", matched: false },
+  { "src": "./images/Bulbasaur.png", matched: false },
+  { "src": "./images/Nidoking.png", matched: false },
+  { "src": "./images/Phanpy.png", matched: false },
+  { "src": "./images/Pidgey.png", matched: false },
+  { "src": "./images/Pikachu.png", matched: false },
+  { "src": "./images/Voltorb.png", matched: false },
 ];
 
 function App() {

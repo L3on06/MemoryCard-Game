@@ -1,8 +1,4 @@
 /* Card */
-.dGrid {
-    display: grid;
-    align-items: center;
-}
 
 .flipped {
     background-color: rgb(21, 35, 70);
@@ -31,22 +27,22 @@
 }
 
 /*  Front Card  */
-.card .front-card {
+.card .frontCard {
     position: absolute;
     transform: rotateY(90deg);
     transition: transform ease-in .25s;
 }
 
-.flipped .front-card {
+.flipped .frontCard {
     transform: rotateY(180deg);
     transition-delay: 0.2s;
 }
 
 /* Back Card */
-.card .back-card {
+.card .backCard {
     transition: transform ease-in .25s;
 }
 
-.flipped .back-card {
+.flipped .backCard {
     transform: rotateY(90deg);
 }
