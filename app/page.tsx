@@ -123,6 +123,7 @@ export default function Home() {
               <button className='title'>M</button>
               <button className='title'>E</button>
             </article>
+
             <article className="card-grid">
               {cards.map(card => (
                 <SingleCard

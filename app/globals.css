@@ -39,18 +39,10 @@ body {
   text-align: center;
 }
 
-@font-palette-values --nabla {
-  font-family: 'Nabla';
-  base-palette: 1;
-}
-
 .title {
   font-size: calc(1rem + 5vw);
   border: none;
   background-color: transparent;
-  font-palette: --nabla;
-  base-palette: 3;
-
 }
 
 .title:hover {
