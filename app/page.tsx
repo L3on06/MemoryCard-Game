@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import SingleCard from '@/Components/SingleCard';
 import PropagateLoader from "react-spinners/PropagateLoader";
+import Image from 'next/image';
 
 interface Card {
   src: string;
@@ -137,6 +138,13 @@ export default function Home() {
             </article>
           </section>
       }
+      <section className="github">
+        <a href="https://github.com/L3on06" target="_blank">
+          <figure>
+            <Image src="/images/github.svg" alt="Github" width={200} height={200} />
+          </figure>
+        </a>
+      </section>
     </main>
   );
 }

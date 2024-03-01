@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Nabla } from "next/font/google";
 import "./globals.css";
-import Favicon from '/public/images/favicon.ico';
 
 const nabla = Nabla({ subsets: ["latin"] });
 
